@@ -1,7 +1,7 @@
 
 # ringcentral-survey-bot <!-- omit in toc -->
 
-Example survey bot for ringcentral glip, created with ringcentral-chatbot-framework and ringcentral-chatbot-factory.
+Example survey bot for ringcentral glip, created with [ringcentral-chatbot-framework](https://github.com/zxdong262/ringcentral-chatbot-python) and [ringcentral-chatbot-factory](https://github.com/zxdong262/ringcentral-chatbot-factory).
 
 This simple bot use custom database wrapper(sqlite3), read [bot-logic.py](bot-logic.py) and [sqlite_custom.py](sqlite_custom.py) for more details.
 
@@ -99,10 +99,6 @@ Edit `lambda/serverless.yml`, and make sure you set the proper name and required
     ## bots
     RINGCENTRAL_BOT_CLIENT_ID:
     RINGCENTRAL_BOT_CLIENT_SECRET:
-
-    ## if you only have one bot app, it is not needed
-    RINGCENTRAL_USER_CLIENT_ID: xxxx
-    RINGCENTRAL_USER_CLIENT_SECRET: xxxx
 
     ## common
     RINGCENTRAL_SERVER: https://platform.devtest.ringcentral.com
