@@ -1,7 +1,7 @@
 
 # ringcentral-survey-bot <!-- omit in toc -->
 
-Example survey bot for ringcentral glip, created with [ringcentral-chatbot-framework](https://github.com/zxdong262/ringcentral-chatbot-python) and [ringcentral-chatbot-factory](https://github.com/zxdong262/ringcentral-chatbot-factory).
+Example survey bot for ringcentral glip, created with [ringcentral-chatbot-framework](https://github.com/zxdong262/ringcentral-chatbot-python) and [ringcentral-chatbot-factory](https://github.com/zxdong262/ringcentral-chatbot-factory-py).
 
 This simple bot use custom database wrapper(sqlite3), read [bot-logic.py](bot-logic.py) and [sqlite_custom.py](sqlite_custom.py) for more details.
 
