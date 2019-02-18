@@ -10,7 +10,10 @@ from shortid import ShortId
 from functools import reduce
 import pydash as _
 import re
-import sqlite3
+try:
+  import sqlite3
+except:
+  pass
 import os
 import sqlite_custom as sq
 

@@ -1,4 +1,7 @@
-import sqlite3
+try:
+  import sqlite3
+except:
+  pass
 import os
 import json
 import pydash as _
