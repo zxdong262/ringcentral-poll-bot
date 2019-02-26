@@ -3,9 +3,19 @@
 
 Example survey bot for ringcentral glip, created with [ringcentral-chatbot-framework](https://github.com/zxdong262/ringcentral-chatbot-python) and [ringcentral-chatbot-factory](https://github.com/zxdong262/ringcentral-chatbot-factory-py).
 
-This simple bot use custom database wrapper(sqlite3), read [bot-logic.py](bot-logic.py) and [sqlite_custom.py](sqlite_custom.py) for more details.
+This simple bot use custom database wrapper(sqlite3) in local dev, read [bot-logic.py](bot-logic.py), [survey_bot.py](survey_bot.py) and [sqlite_custom.py](sqlite_custom.py) for more details.
 
-![screenshots/screenshot.png](screenshots/screenshot.png)
+![screenshots/00hello.png](screenshots/00hello.png)
+
+Supported Commands:
+
+- list surveys ([screenshot](screenshots/03list.png))
+- show survey info ([screenshot](sscreenshots/04show.png))
+- remove survey ([screenshot](screenshots/05remove.png))
+- add single choice survey ([screenshot](screenshots/01single-choice-add.png))
+- add multi choice survey ([screenshot](screenshots/06milti-choices-add.png))
+- vote for single choice survey ([screenshot](screenshots/02vote.png))
+- vote for multi choice survey ([screenshot](screenshots/07milti-choices-vote.png))
 
 ## Table of contents <!-- omit in toc -->
 

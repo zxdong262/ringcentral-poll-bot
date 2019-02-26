@@ -54,14 +54,7 @@ def prepareDb(tables):
     conn.commit()
     conn.close()
 
-def getOne(tableName, id):
-  cur, conn = createConnection()
-  st = f"select * from {tableName} where id='{id}';"
-  cur.execute(st)
-  res = cur.fetchone()
-  conn.close()
-  if not _.predicates.is_tuple(res):
-    return False
+def resultMapper(res, tableName):
   obj = {}
   dbDef = _.collections.find(tbs, lambda x: x['name'] == tableName)
   opts = dbDef['schemas']
@@ -70,9 +63,37 @@ def getOne(tableName, id):
     tp = opt['type']
     nm = opt['name']
     v = res[i]
-    obj[nm] = json.loads(v) if tp == 'json' else v
+    obj[nm] = json.loads(v) if not tp == 'string' else v
     i = i + 1
   return obj
+
+def getOne(tableName, id):
+  cur, conn = createConnection()
+  st = f"select * from {tableName} where id='{id}';"
+  cur.execute(st)
+  res = cur.fetchone()
+  conn.close()
+  if not _.predicates.is_tuple(res):
+    return False
+  return resultMapper(res, tableName)
+
+def query(tableName, query):
+  '''
+  single query
+  '''
+  cur, conn = createConnection()
+  key = query['key']
+  value = query['value']
+  st = f"select * from {tableName} where {key}='{value}';"
+  cur.execute(st)
+  reses = cur.fetchall()
+  conn.close()
+  final = []
+  for res in reses:
+    final.append(
+      resultMapper(res, tableName)
+    )
+  return final
 
 def delOne(tableName, id):
   cur, conn = createConnection()
