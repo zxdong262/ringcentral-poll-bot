@@ -27,8 +27,8 @@ To Add new Survey, just Reply:
 
 * If you want to add **multi choice question**, change **1** to **N**, or you can just skip **1**.
 * You can view survey list by **@![:Person]({botId}) list**.
+* You can view survey info by **@![:Person]({botId}) show #surveyID**.
 * You can remove survey by **@![:Person]({botId}) remove #surveyID**.
-
 '''
 
 def surveyReducer(x, y):
