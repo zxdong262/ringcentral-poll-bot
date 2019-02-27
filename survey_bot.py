@@ -204,6 +204,10 @@ def onVote(
       res = dbAction('survey', 'get', {
         'id': uid
       })
+      if not _.predicates.is_dict(res):
+        return sendMsg(
+          f'@![:Person]({creatorId}) Survey not exist, please check the Survey ID'
+        )
       if alreadySelected(res['options'], creatorId):
         return sendMsg(
           f'@![:Person]({creatorId}) you already made your choices'
@@ -211,10 +215,6 @@ def onVote(
       if len(indexArr) > res['max_select']:
         return sendMsg(
           f'@![:Person]({creatorId}) max {res["max_select"]} choices'
-        )
-      if not _.predicates.is_dict(res):
-        return sendMsg(
-          f'@![:Person]({creatorId}) Survey not exist, please check the Survey ID'
         )
 
       for index in indexArr:
