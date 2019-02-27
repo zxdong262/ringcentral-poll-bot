@@ -91,7 +91,7 @@ def onRemoveSurvey(
   sur = dbAction('survey', 'get', {
     'id': id
   })
-  if sur is None:
+  if not _.predicates.is_object(sur):
     return sendMsg(f'Survey **{id}** not exist')
   dbAction('survey', 'remove', {
     'id': id
@@ -111,7 +111,7 @@ def onShowSurvey(
   sur = dbAction('survey', 'get', {
     'id': id
   })
-  if sur is None:
+  if not _.predicates.is_object(sur):
     return sendMsg(f'Survey **#{id}** not exist')
   arr = sur['options']
   if not _.predicates.is_list(arr):
