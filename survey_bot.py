@@ -63,7 +63,7 @@ def onSurveyList(
     'key': 'groupId',
     'value': groupId
   })
-  if not surveys:
+  if not _.predicates.is_list(surveys):
     surveys = []
   surveyList = reduce(surveyListReducer, surveys, '')
   if surveyList == '':
@@ -113,7 +113,10 @@ def onShowSurvey(
   })
   if sur is None:
     return sendMsg(f'Survey **#{id}** not exist')
-  lister = reduce(surveyReducer, sur['options'], '')
+  arr = sur['options']
+  if not _.predicates.is_list(arr):
+    arr = []
+  lister = reduce(surveyReducer, arr, '')
   return sendMsg(
     f'''
 Survey **#{id}**
@@ -161,7 +164,10 @@ def onAddSurvey(
       })
       i = i + 1
   dbAction('survey', 'add', res)
-  list1 = reduce(surveyReducer, res['options'], '')
+  arr = res['options']
+  if not _.predicates.is_list(arr):
+    arr = []
+  list1 = reduce(surveyReducer, arr, '')
   selectString = '1'
   if maxSelect > 1:
     selectString = f'1,2,..N({maxSelect} choices max)'
@@ -228,7 +234,10 @@ def onVote(
           'options': res['options']
         }
       })
-      list1 = reduce(surveyReducer, res['options'], '')
+      arr = res['options']
+      if not _.predicates.is_list(arr):
+        arr = []
+      list1 = reduce(surveyReducer, arr, '')
       selectString = '1'
       if res['max_select'] > 1:
         selectString = f'1,2,..N({res["max_select"]} choices max)'
