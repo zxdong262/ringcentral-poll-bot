@@ -10,7 +10,7 @@ This simple bot use custom database wrapper(sqlite3) in local dev, read [bot-log
 Supported Commands:
 
 - list surveys ([screenshot](screenshots/03list.png))
-- show survey info ([screenshot](sscreenshots/04show.png))
+- show survey info ([screenshot](screenshots/04show.png))
 - remove survey ([screenshot](screenshots/05remove.png))
 - add single choice survey ([screenshot](screenshots/01single-choice-add.png))
 - add multi choice survey ([screenshot](screenshots/06milti-choices-add.png))
