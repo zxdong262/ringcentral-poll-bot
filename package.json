@@ -1,6 +1,6 @@
 {
   "name": "ringcentral-survey-bot",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Example survey bot for ringcentral glip, created with ringcentral-chatbot-framework and ringcentral-chatbot-factory",
   "keywords": [
     "ringcentral",
