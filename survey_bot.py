@@ -63,7 +63,8 @@ def onSurveyList(
     'key': 'groupId',
     'value': groupId
   })
-  print(surveys, 'surveys')
+  if not surveys:
+    surveys = []
   surveyList = reduce(surveyListReducer, surveys, '')
   if surveyList == '':
     return sendMsg(helpMsg(bot.id))
