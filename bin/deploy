@@ -4,6 +4,7 @@ cd `dirname $0`
 cd ../dev/lambda
 rm -rf sqlite_custom.py
 rm -rf config.py
+rm -rf survey_bot.py
 rm -rf ringcentral_bot_framework
 cp -r ../../ringcentral_bot_framework ./
 cp -r ../../requirements.txt ./
