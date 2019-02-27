@@ -6,7 +6,6 @@ from shortid import ShortId
 from functools import reduce
 import pydash as _
 import re
-import sqlite3
 import os
 import sqlite_custom as sq
 from datetime import datetime
