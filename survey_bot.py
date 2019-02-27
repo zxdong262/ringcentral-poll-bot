@@ -125,7 +125,7 @@ Survey **#{id}**
 
 {lister}
 
-Reply "@![:Person]({bot.id}) #{id} **1**" to vote.
+Reply "@![:Person]({bot.id}) #{id} **N**" to vote.
     '''
   )
 
@@ -168,7 +168,7 @@ def onAddSurvey(
   if not _.predicates.is_list(arr):
     arr = []
   list1 = reduce(surveyReducer, arr, '')
-  selectString = '1'
+  selectString = 'N'
   if maxSelect > 1:
     selectString = f'1,2,..N({maxSelect} choices max)'
   msg = f'''@![:Person]({creatorId}) New survey added:
@@ -238,7 +238,7 @@ def onVote(
       if not _.predicates.is_list(arr):
         arr = []
       list1 = reduce(surveyReducer, arr, '')
-      selectString = '1'
+      selectString = 'N'
       if res['max_select'] > 1:
         selectString = f'1,2,..N({res["max_select"]} choices max)'
       msg = f'''@![:Person]({creatorId}) your vote added:
