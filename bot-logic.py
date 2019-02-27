@@ -11,7 +11,10 @@ from functools import reduce
 import pydash as _
 import re
 import os
-import sqlite_custom as sq
+try:
+  import sqlite_custom as sq
+except:
+  pass
 from survey_bot import helpMsg, onSurveyList, onRemoveSurvey, onShowSurvey, onAddSurvey, onVote, dbTablesDef
 
 sid = ShortId()
