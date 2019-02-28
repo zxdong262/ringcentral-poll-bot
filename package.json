@@ -1,7 +1,7 @@
 {
-  "name": "ringcentral-survey-bot",
+  "name": "ringcentral-poll-bot",
   "version": "0.2.0",
-  "description": "Example survey bot for ringcentral glip, created with ringcentral-chatbot-framework and ringcentral-chatbot-factory",
+  "description": "Poll bot for ringcentral glip, created with ringcentral-chatbot-framework and ringcentral-chatbot-factory",
   "keywords": [
     "ringcentral",
     "bot",
@@ -11,14 +11,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zxdong262/ringcentral-survey-bot.git"
+    "url": "git+https://github.com/zxdong262/ringcentral-poll-bot.git"
   },
   "author": "Drake Zhao <drake.zhao@ringcentral.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zxdong262/ringcentral-survey-bot/issues"
+    "url": "https://github.com/zxdong262/ringcentral-poll-bot/issues"
   },
-  "homepage": "https://github.com/zxdong262/ringcentral-survey-bot#readme",
+  "homepage": "https://github.com/zxdong262/ringcentral-poll-bot#readme",
   "devDependencies": {
     "ngrok": "3.1.0",
     "serverless": "1.33.2",

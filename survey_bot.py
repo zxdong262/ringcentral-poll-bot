@@ -14,21 +14,21 @@ sid = ShortId()
 gid = sid.generate
 
 def helpMsg(botId):
-  return f'''Hello, I am the survey bot.
+  return f'''Hello, I am the poll bot.
 
-To Add new Survey, just Reply:
+To Add new poll, just Reply:
 
 
-> @![:Person]({botId}) **1** **add** **Your Survey title**
-> Survey option 1
-> Survey option 2
-> Survey option 3
+> @![:Person]({botId}) **1** **add** **Your poll title**
+> poll option 1
+> poll option 2
+> poll option 3
 
 
 * If you want to add **multi choice question**, change **1** to **N**, or you can just skip **1**.
-* You can view survey list by **@![:Person]({botId}) list**.
-* You can view survey info by **@![:Person]({botId}) show #surveyID**.
-* You can remove survey by **@![:Person]({botId}) remove #surveyID**.
+* You can view poll list by **@![:Person]({botId}) list**.
+* You can view poll info by **@![:Person]({botId}) show #pollID**.
+* You can remove poll by **@![:Person]({botId}) remove #pollID**.
 '''
 
 def surveyReducer(x, y):
@@ -57,7 +57,7 @@ def onSurveyList(
   dbAction
 ):
   '''
-  survey list command
+  poll list command
   '''
   surveys = dbAction('survey', 'get', {
     'key': 'groupId',
@@ -74,8 +74,8 @@ def onSurveyList(
 
 {surveyList}
 
-Reply with **@![:Person]({bot.id}) show #SurveyID** to show Survey info.
-Reply with **@![:Person]({bot.id}) remove #SurveyID** to delete one survey.
+Reply with **@![:Person]({bot.id}) show #PollID** to show poll info.
+Reply with **@![:Person]({bot.id}) remove #PollID** to delete one poll.
 '''
   )
 
@@ -85,18 +85,18 @@ def onRemoveSurvey(
   sendMsg
 ):
   '''
-  survey remove command
+  poll remove command
   '''
   id = m.group(1)
   sur = dbAction('survey', 'get', {
     'id': id
   })
   if not _.predicates.is_object(sur):
-    return sendMsg(f'Survey **{id}** not exist')
+    return sendMsg(f'Poll **{id}** not exist')
   dbAction('survey', 'remove', {
     'id': id
   })
-  return sendMsg(f'Survey **#{id}** {sur["title"]} deleted')
+  return sendMsg(f'Poll **#{id}** {sur["title"]} deleted')
 
 def onShowSurvey(
   m,
@@ -105,21 +105,21 @@ def onShowSurvey(
   bot
 ):
   '''
-  survey show command
+  poll show command
   '''
   id = m.group(1)
   sur = dbAction('survey', 'get', {
     'id': id
   })
   if not _.predicates.is_object(sur):
-    return sendMsg(f'Survey **#{id}** not exist')
+    return sendMsg(f'Poll **#{id}** not exist')
   arr = sur['options']
   if not _.predicates.is_list(arr):
     arr = []
   lister = reduce(surveyReducer, arr, '')
   return sendMsg(
     f'''
-Survey **#{id}**
+Poll **#{id}**
 
 **{sur['title']}**
 
@@ -139,10 +139,10 @@ def onAddSurvey(
   sendMsg
 ):
   '''
-  survey add command
+  poll add command
   '''
   maxSelect = int(re1.group(1) or 1)
-  title = re1.group(2) or 'untitled survey'
+  title = re1.group(2) or 'untitled poll'
   i = 0
   res = {
     'id': gid(),
@@ -171,9 +171,9 @@ def onAddSurvey(
   selectString = 'N'
   if maxSelect > 1:
     selectString = f'1,2,..N({maxSelect} choices max)'
-  msg = f'''@![:Person]({creatorId}) New survey added:
+  msg = f'''@![:Person]({creatorId}) New poll added:
 
-**Survey #{res['id']}**
+**Poll #{res['id']}**
 
 **{title}**
 
@@ -193,7 +193,7 @@ def onVote(
   msgHelp
 ):
   '''
-  on vote for survey
+  on vote for poll
   '''
   m = re.match(r'.+ #([^ ]+) +([\d,]+)', text)
   if not m is None:
@@ -206,7 +206,7 @@ def onVote(
       })
       if not _.predicates.is_dict(res):
         return sendMsg(
-          f'@![:Person]({creatorId}) Survey not exist, please check the Survey ID'
+          f'@![:Person]({creatorId}) Poll not exist, please check the Survey ID'
         )
       if alreadySelected(res['options'], creatorId):
         return sendMsg(
@@ -223,7 +223,7 @@ def onVote(
         opt = _.get(res, f'options[{rindex}]')
         if opt is None:
           return sendMsg(
-            f'@![:Person]({creatorId}) Survey Option **{index}** not exist, please check Option index number you select'
+            f'@![:Person]({creatorId}) Poll Option **{index}** not exist, please check Option index number you select'
           )
         res['options'][rindex]['userIds'] = _.arrays.uniq(
           res['options'][rindex]['userIds'] + [creatorId]
@@ -243,7 +243,7 @@ def onVote(
         selectString = f'1,2,..N({res["max_select"]} choices max)'
       msg = f'''@![:Person]({creatorId}) your vote added:
 
-**Survey #{res['id']}**
+**Poll #{res['id']}**
 
 **{res['title']}**
 
