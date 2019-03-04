@@ -2,4 +2,4 @@ flask
 python-dotenv
 pylint
 shortid
-ringcentral_bot_framework == 0.1.6
+ringcentral_bot_framework == 0.2.0
