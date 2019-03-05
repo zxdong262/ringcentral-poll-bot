@@ -11,4 +11,4 @@ cp -r ../../requirements.txt ./
 cp -r ../../bot-logic.py ./config.py
 cp -r ../../sqlite_custom.py ./
 cp -r ../../survey_bot.py ./
-../../node_modules/.bin/serverless deploy
+node ../../bin/deploy.js
