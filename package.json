@@ -1,6 +1,6 @@
 {
   "name": "ringcentral-poll-bot",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Poll bot for ringcentral glip, created with ringcentral-chatbot-framework and ringcentral-chatbot-factory",
   "keywords": [
     "ringcentral",

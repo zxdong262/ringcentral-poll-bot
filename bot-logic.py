@@ -39,7 +39,8 @@ def botGotPostAddAction(
   user,
   text,
   dbAction,
-  handledByExtension
+  handledByExtension,
+  event
 ):
   """
   bot got group chat message: text
