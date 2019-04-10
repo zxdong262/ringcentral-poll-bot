@@ -18,15 +18,15 @@ def helpMsg(botId):
 
 To Add new poll, just Reply:
 
-> @![:Person]({botId}) **1** **add** **Your poll title**
+> ![:Person]({botId}) **1** **add** **Your poll title**
 > poll option 1
 > poll option 2
 > poll option 3
 
 * If you want to add **multi choice question**, change **1** to **N**, or you can just skip **1**.
-* You can view poll list by **@![:Person]({botId}) list**.
-* You can view poll info by **@![:Person]({botId}) show #pollID**.
-* You can remove poll by **@![:Person]({botId}) remove #pollID**.
+* You can view poll list by **![:Person]({botId}) list**.
+* You can view poll info by **![:Person]({botId}) show #pollID**.
+* You can remove poll by **![:Person]({botId}) remove #pollID**.
 '''
 
 def surveyReducer(x, y):
@@ -72,8 +72,8 @@ def onSurveyList(
 
 {surveyList}
 
-Reply with **@![:Person]({bot.id}) show #PollID** to show poll info.
-Reply with **@![:Person]({bot.id}) remove #PollID** to delete one poll.
+Reply with **![:Person]({bot.id}) show #PollID** to show poll info.
+Reply with **![:Person]({bot.id}) remove #PollID** to delete one poll.
 '''
   )
 
@@ -123,7 +123,7 @@ Poll **#{id}**
 
 {lister}
 
-Reply "@![:Person]({bot.id}) #{id} **N**" to vote.
+Reply "![:Person]({bot.id}) #{id} **N**" to vote.
     '''
   )
 
@@ -169,7 +169,7 @@ def onAddSurvey(
   selectString = 'N'
   if maxSelect > 1:
     selectString = f'1,2,..N({maxSelect} choices max)'
-  msg = f'''@![:Person]({creatorId}) New poll added:
+  msg = f'''![:Person]({creatorId}) New poll added:
 
 **Poll #{res['id']}**
 
@@ -177,7 +177,7 @@ def onAddSurvey(
 
 {list1}
 
-Reply "@![:Person]({bot.id}) #{res['id']} **{selectString}**" to vote.
+Reply "![:Person]({bot.id}) #{res['id']} **{selectString}**" to vote.
 '''
   sendMsg(msg)
   return
@@ -204,15 +204,15 @@ def onVote(
       })
       if not _.predicates.is_dict(res):
         return sendMsg(
-          f'@![:Person]({creatorId}) Poll not exist, please check the Survey ID'
+          f'![:Person]({creatorId}) Poll not exist, please check the Survey ID'
         )
       if alreadySelected(res['options'], creatorId):
         return sendMsg(
-          f'@![:Person]({creatorId}) you already made your choices'
+          f'![:Person]({creatorId}) you already made your choices'
         )
       if len(indexArr) > res['max_select']:
         return sendMsg(
-          f'@![:Person]({creatorId}) max {res["max_select"]} choices'
+          f'![:Person]({creatorId}) max {res["max_select"]} choices'
         )
 
       for index in indexArr:
@@ -221,7 +221,7 @@ def onVote(
         opt = _.get(res, f'options[{rindex}]')
         if opt is None:
           return sendMsg(
-            f'@![:Person]({creatorId}) Poll Option **{index}** not exist, please check Option index number you select'
+            f'![:Person]({creatorId}) Poll Option **{index}** not exist, please check Option index number you select'
           )
         res['options'][rindex]['userIds'] = _.arrays.uniq(
           res['options'][rindex]['userIds'] + [creatorId]
@@ -239,7 +239,7 @@ def onVote(
       selectString = 'N'
       if res['max_select'] > 1:
         selectString = f'1,2,..N({res["max_select"]} choices max)'
-      msg = f'''@![:Person]({creatorId}) your vote added:
+      msg = f'''![:Person]({creatorId}) your vote added:
 
 **Poll #{res['id']}**
 
@@ -249,7 +249,7 @@ def onVote(
 
 Update time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
 
-Reply "@![:Person]({bot.id}) #{res['id']} **{selectString}**" to vote.
+Reply "![:Person]({bot.id}) #{res['id']} **{selectString}**" to vote.
 '''
       sendMsg(msg)
     except Exception as e:
