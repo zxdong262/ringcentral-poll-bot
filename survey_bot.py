@@ -23,6 +23,7 @@ To Add new poll, just Reply:
 > poll option 2
 > poll option 3
 
+
 * If you want to add **multi choice question**, change **1** to **N**, or you can just skip **1**.
 * You can view poll list by **![:Person]({botId}) list**.
 * You can view poll info by **![:Person]({botId}) show #pollID**.
