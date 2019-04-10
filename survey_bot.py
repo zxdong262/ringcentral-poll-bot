@@ -18,11 +18,10 @@ def helpMsg(botId):
 
 To Add new poll, just Reply:
 
-@![:Person]({botId}) **1** **add** **Your poll title**
-poll option 1
-poll option 2
-poll option 3
-
+> @![:Person]({botId}) **1** **add** **Your poll title**
+> poll option 1
+> poll option 2
+> poll option 3
 
 * If you want to add **multi choice question**, change **1** to **N**, or you can just skip **1**.
 * You can view poll list by **@![:Person]({botId}) list**.
