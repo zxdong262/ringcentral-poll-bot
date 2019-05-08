@@ -170,4 +170,4 @@ def dbName():
   return db name
   * set DB_TYPE=custom in .env to activate
   '''
-  return 'sqlite3'
+  return 'pg'

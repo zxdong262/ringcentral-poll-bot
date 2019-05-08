@@ -59,7 +59,7 @@ RINGCENTRAL_BOT_CLIENT_SECRET=
 cp bot-logic.py config.py
 
 # run local dev server
-./bin/start
+rcs config.py
 ```
 
 ## Test bot
